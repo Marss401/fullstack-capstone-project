@@ -4,7 +4,6 @@ const MongoClient = require('mongodb').MongoClient;
 
 // MongoDB connection URL with authentication options
 let url = `${process.env.MONGO_URL}`;
-console.log(url);
 if (!url) {
     throw new Error("MONGO_URL is not defined in environment variables");
 }
