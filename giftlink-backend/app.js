@@ -25,6 +25,7 @@ app.use(express.json());
 // Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
 const giftRoutes = require('./routes/giftRoutes')
 const searchRoutes = require('./routes/searchRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 // Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
 //{{insert code here}}
@@ -42,6 +43,9 @@ app.use('/api/gifts', giftRoutes);
 
 // Search API Task 2: add the searchRoutes to the server by using the app.use() method.
 app.use('/api/search', searchRoutes);
+
+// Auth API Task 2: add the authRoutes to the server by using the app.use() method.
+app.use('/api/auth', authRoutes);
 
 
 // Global Error Handler

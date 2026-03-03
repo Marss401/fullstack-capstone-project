@@ -10,7 +10,6 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
-const navigate = useNavigate();
   return (
     <>
         <Navbar/>

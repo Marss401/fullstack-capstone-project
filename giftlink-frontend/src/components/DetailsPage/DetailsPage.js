@@ -93,7 +93,7 @@ function DetailsPage() {
                             <div className="no-image-available-large">No Image Available</div>
                         )}
                     </div>
-                    // Task 6: Display gift details
+                    {/* //Task 6: Display gift details */}
                     <p><strong>Category:</strong>
                         {gift.category}
                     </p>
@@ -113,7 +113,7 @@ function DetailsPage() {
             </div>
             <div className="comments-section mt-4">
                 <h3 className="mb-3">Comments</h3>
-				// Task 7: Render comments section by using the map function to go through all the comments
+				{/* // Task 7: Render comments section by using the map function to go through all the comments */}
                 {comments.map((comment, index) => (
                     <div key={index} className="card mb-3">
                         <div className="card-body">
