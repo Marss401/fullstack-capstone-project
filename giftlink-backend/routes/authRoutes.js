@@ -105,12 +105,12 @@ router.post('/login', async (req, res) => {
 //Update API
 router.put('/update', async (req, res) => {
     const errors = validationResult(req);
+    // Task 3: Check if `email` is present in the header and throw an appropriate error message if not present.
     if (!errors.isEmpty()) {
         logger.error('Validation errors in update request', errors.array());
         return res.status(400).json({ errors: errors.array() });
     }
     try {
-        // Task 3: Check if `email` is present in the header and throw an appropriate error message if not present.
         const email = req.headers.email;
 
         if (!email) {
@@ -124,6 +124,12 @@ router.put('/update', async (req, res) => {
 
         // Task 5: find user credentials in database
         const existingUser = await collection.findOne({ email });
+        if (!existingUser) {
+            logger.error('User not found');
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        existingUser.firstName = req.body.name;
         existingUser.updatedAt = new Date();
 
         // Task 6: update user credentials in database
@@ -140,12 +146,13 @@ router.put('/update', async (req, res) => {
             },
         };
         const authtoken = jwt.sign(payload, JWT_SECRET);
+        logger.info('User updated successfully');
+
         res.json({ authtoken });
     } catch (e) {
+        logger.error(error);
         return res.status(500).send('Internal server error');
     }
 });
-
-
 
 module.exports = router;
