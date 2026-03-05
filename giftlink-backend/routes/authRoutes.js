@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+//Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
 const { body, validationResult } = require('express-validator');
 const connectToDatabase = require('../models/db');
 const router = express.Router();
@@ -23,10 +24,8 @@ router.post('/register', async (req, res) => {
     try {
         // Task 1: Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`
         const db = await connectToDatabase();
-
         // Task 2: Access MongoDB collection
         const collection = db.collection("users");
-
         //Task 3: Check for existing email
         const existingEmail = await collection.findOne({ email: req.body.email });
         if (existingEmail) {
@@ -62,6 +61,7 @@ router.post('/register', async (req, res) => {
 });
 //Login Endpoint
 router.post('/login', async (req, res) => {
+    console.log("\n\n Inside login");
     try {
         // Task 1: Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`.
         const db = await connectToDatabase();
@@ -102,9 +102,7 @@ router.post('/login', async (req, res) => {
 
     }
 });
-//Update Endpoint
-// {Insert it along with other imports} Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
-
+//Update API
 router.put('/update', async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
