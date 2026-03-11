@@ -1,4 +1,4 @@
-// db.js
+
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
 
@@ -13,19 +13,19 @@ const dbName = "giftdb";
 
 async function connectToDatabase() {
     if (dbInstance){
-        return dbInstance
-    };
+        return dbInstance;
+    }
 
     const client = new MongoClient(url);      
 
     // Task 1: Connect to MongoDB
-    await client.connect()
+    await client.connect();
 
     // Task 2: Connect to database giftDB and store in variable dbInstance
-    dbInstance = client.db(dbName)
+    dbInstance = client.db(dbName);
 
     // Task 3: Return database instance
-    return dbInstance
+    return dbInstance;
 }
 
 module.exports = connectToDatabase;
