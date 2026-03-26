@@ -5,6 +5,7 @@ import { urlConfig } from '../../config';
 import { useAppContext } from '../../context/AuthContext';
 //{{Insert code here}} //Task 3: Import useNavigate from `react-router-dom` to handle navigation after successful registration.
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './RegisterPage.css';
 
@@ -54,7 +55,7 @@ function RegisterPage() {
                 //Step 2 - Task 3
                 setIsLoggedIn(true);
                 //Step 2 - Task 4
-                navigate('/app');
+                navigate('/app/login');
             }
             if (json.error) {
                 //Step 2 - Task 5
@@ -124,9 +125,9 @@ function RegisterPage() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <button className="btn btn-primary w-100 mb-3" onClick={handleRegister}>Register</button>
+                        <button type="button" className="btn btn-primary w-100 mb-3" onClick={handleRegister}>Register</button>
                         <p className="mt-4 text-center">
-                            Already a member? <a href="/app/login" className="text-primary">Login</a>
+                            Already a member? <Link to="/app/login" className="text-primary">Login</Link>
                         </p>
                     </div>
                 </div>
